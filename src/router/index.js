@@ -1,15 +1,34 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import HelloWorld from '@/components/HelloWorld';
+import localizadorenvio from '@/components/localizadorenvio';
+import creaenvio from '@/components/creaenvio';
+import iniciosesion from '@/components/iniciosesion';
+
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    }
+      path: '/', redirect: '/ujapack'
+    },
+    {
+      path: '/ujapack/iniciarSesion',
+      name: 'iniciosesion',
+      component: iniciosesion
+    },
+    {
+      path: '/ujapack/crearEnvio',
+      name: 'creaenvio',
+      component: creaenvio
+    
+    },
+    {
+      path: '/ujapack',
+      name: 'localizadorenvio',
+      component: localizadorenvio
+    
+    },
+
   ]
 });
