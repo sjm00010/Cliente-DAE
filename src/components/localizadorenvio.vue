@@ -1,30 +1,82 @@
 <template>
-  <!-- Material form register -->
-  <form>
-    <p class="h4 text-center mb-4">Sigue tu envío</p>
-<div class="grey-text">
-        <mdb-input label="Nº de seguimiento de envío" icon="box" type="text"/>
-         <div class="text-center">
-      <mdb-btn @click="redireccion()" color="primary">Buscar</mdb-btn>
-    </div>
-</div>
-  </form>
-
+  <div>
+    <!-- Material form register -->
+    <form>
+      <p class="h4 text-center mb-4">Sigue tu envío</p>
+      <div class="grey-text">
+        <mdb-input
+          v-model="idEnvio"
+          label="Nº de seguimiento de envío"
+          icon="box"
+          type="text"
+        />
+        <div class="text-center">
+          <mdb-btn @click="getEnvio()" color="primary">Buscar</mdb-btn>
+        </div>
+      </div>
+    </form>
+    <p v-show="estadoEnvio != ''">El envio está: {{ estadoEnvio }}</p>
+    <p v-show="error != ''">{{ error }}</p>
+  </div>
 </template>
 
 <script>
-import {mdbInput, mdbBtn} from 'mdbvue';
+import { mdbInput, mdbBtn } from "mdbvue";
 import router from "@/router";
 export default {
-        name: 'localizadorenvio',
-        components: {
-        mdbInput,
-        mdbBtn
-        },
-  methods: {
-  redireccion(){
-    router.push("/ujapack/muestraEnvioUsuario");
-  }
+  name: "localizadorenvio",
+  components: {
+    mdbInput,
+    mdbBtn,
   },
-}
+  data() {
+    return {
+      idEnvio: "",
+      estadoEnvio: "",
+      error: "",
+    };
+  },
+  methods: {
+    redireccion() {
+      router.push("/ujapack/muestraEnvioUsuario");
+    },
+    async getEnvio() {
+      this.error = "";
+      this.estadoEnvio = "";
+      try {
+        const baseURL = `http://localhost:8080/ujapack/envio/${this.idEnvio.trim()}`;
+        let response = await fetch(baseURL);
+        const envio = await response.json();
+        switch (envio.estado) {
+          case "EN_TRANSITO":
+            this.estadoEnvio = "en tránsito";
+            break;
+          case "EN_REPARTO":
+            this.estadoEnvio = "en reparto";
+            break;
+          case "ENTREGADO":
+            this.estadoEnvio = "entregado";
+            break;
+          case "EXTRAVIADO":
+            this.estadoEnvio = "extraviado";
+            break;
+          default:
+        }
+        //Hacer lista de puntos de control
+        // let response = await fetch(baseURL + `/puntoControl`);
+        // const envio = await response.json();
+
+      } catch (err) {
+        this.error = `No existe ningún envio con el id: ${this.idEnvio.trim()}`;
+      }
+
+      // fetch(`http://localhost:8080/ujapack/envio/${this.idEnvio.trim()}`)
+      //   .then((response) => response.json())
+      //   .then((data) => (this.respServ = data))
+      //   .catch((error) => {
+      //     console.log("Error:", error);
+      //   });
+    },
+  },
+};
 </script>
