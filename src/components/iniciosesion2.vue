@@ -1,7 +1,7 @@
 <template>
   <!-- Material form register -->
   <form>
-    <p class="h4 text-center mb-4">Iniciar sesión como administrador</p>
+    <p class="h4 text-center mb-4">Iniciar sesión como operario</p>
     <div class="grey-text">
       <mdb-input
         v-model="nombre"
@@ -45,8 +45,8 @@ export default {
   methods: {
 
     loguear() {
-      if (this.nombre == "admin" && this.contrasena == "admin") {
-        router.push("/ujapack/crearEnvio");
+      if (this.nombre == "operario" && this.contrasena == "secret") {
+        router.push("/ujapack/actualizarEnvio");
       }
   },
 },
