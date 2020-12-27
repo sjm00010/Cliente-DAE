@@ -46,7 +46,7 @@ export default {
 
     loguear() {
       if (this.nombre == "operario" && this.contrasena == "secret") {
-        router.push("/ujapack/actualizarEnvio");
+        router.push("/ujapack/buscaEnvioActualizar");
       }
   },
 },

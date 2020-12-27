@@ -4,7 +4,10 @@ import localizadorenvio from '@/components/localizadorenvio';
 import creaenvio from '@/components/creaenvio';
 import iniciosesion from '@/components/iniciosesion';
 import iniciosesion2 from '@/components/iniciosesion2';
-import actualizaenvio from '@/components/actualizaenvio';
+import buscaenvioactualizar from '@/components/buscaenvioactualizar';
+import muestraenviousuario from '@/components/muestraenviousuario';
+import muestraenviooperario from '@/components/muestraenviooperario';
+
 
 
 Vue.use(Router);
@@ -31,11 +34,25 @@ export default new Router({
     
     },
     {
-      path: '/ujapack/actualizarEnvio',
-      name: 'actualizaenvio',
-      component: actualizaenvio
+      path: '/ujapack/buscaEnvioActualizar',
+      name: 'buscaenvioactualizar',
+      component: buscaenvioactualizar
     
     },
+    {
+      path: '/ujapack/buscaEnvioActualizar/muestraEnvioOperario',
+      name: 'muestraenviooperario',
+      component: muestraenviooperario
+    
+    },
+    {
+      path: '/ujapack/muestraEnvioUsuario',
+      name: 'muestraenviousuario',
+      component: muestraenviousuario
+    
+    },
+    
+
     {
       path: '/ujapack',
       name: 'localizadorenvio',

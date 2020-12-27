@@ -1,7 +1,7 @@
 <template>
   <!-- Material form register -->
-  <form>
-    <p class="h4 text-center mb-4">Sigue tu envío</p>
+  <form> <!--Formulario que busca el envio a actualizar-->
+    <p class="h4 text-center mb-4">Busca un envío</p>
 <div class="grey-text">
         <mdb-input label="Nº de seguimiento de envío" icon="box" type="text"/>
          <div class="text-center">
@@ -16,15 +16,16 @@
 import {mdbInput, mdbBtn} from 'mdbvue';
 import router from "@/router";
 export default {
-        name: 'localizadorenvio',
-        components: {
-        mdbInput,
-        mdbBtn
-        },
+  name: "buscaenvioactualizar",
+  components:{
+  mdbInput,
+  mdbBtn
+  },
   methods: {
   redireccion(){
-    router.push("/ujapack/muestraEnvioUsuario");
+    router.push("/ujapack/buscaEnvioActualizar/muestraEnvioOperario");
   }
   },
-}
+
+};
 </script>
