@@ -213,15 +213,12 @@ export default {
         const envio = await response.json();
         this.idEnvio =envio.identificador;
         this.precio =envio.precio;
-        console.log('envio',envio);
         }
         else {
             this.error = "No se ha podido crear el envío";
         }
       } catch (err) {
         this.error2 = "No se ha podido conectar con la API"
-        console.error(err);
-        console.log(JSON.stringify(body))
       }
     },
   },

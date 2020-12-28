@@ -17,6 +17,10 @@
     </form>
     <p v-show="estadoEnvio != ''">El envio está: {{ estadoEnvio }}</p>
     <p v-show="error != ''">{{ error }}</p>
+    <p v-show="puntosControl !=null"> Fechas de paso por los puntos de control hasta el momento</p>
+    <ul>
+     <li v-show="pc.fecha!=null" v-for="(pc, index) in  puntosControl" v-bind:key="index"> {{pc.fecha}}</li>
+    </ul>
   </div>
 </template>
 
@@ -34,6 +38,7 @@ export default {
       idEnvio: "",
       estadoEnvio: "",
       error: "",
+      puntosControl:null,
     };
   },
   methods: {
@@ -43,6 +48,7 @@ export default {
     async getEnvio() {
       this.error = "";
       this.estadoEnvio = "";
+      this.puntosControl=null;
       try {
         const baseURL = `http://localhost:8080/ujapack/envio/${this.idEnvio.trim()}`;
         let response = await fetch(baseURL);
@@ -64,13 +70,13 @@ export default {
           default:
         }
         //Hacer lista de puntos de control
-        // let response2 = await fetch(baseURL + `/puntoControl`);
-        // const envio2 = await response.json();
-        // envio2.
-
+         response = await fetch(baseURL + `/puntoControl`);
+         const puntoControl = await response.json();
+         this.puntosControl = puntoControl;
       } catch (err) {
         this.error = `No existe ningún envio con el id: ${this.idEnvio.trim()}`;
       }
+
 
       // fetch(`http://localhost:8080/ujapack/envio/${this.idEnvio.trim()}`)
       //   .then((response) => response.json())
