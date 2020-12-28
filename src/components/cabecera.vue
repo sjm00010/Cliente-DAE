@@ -1,5 +1,5 @@
 <template>
-  <mdb-navbar expand="large" dark color="stylish">
+  <mdb-navbar class="mb-3" expand="large" dark color="stylish">
     <mdb-navbar-brand router-link to="/ujapack">
       <img :src="require('@/assets/logo.png')" height="50px" />
     </mdb-navbar-brand>

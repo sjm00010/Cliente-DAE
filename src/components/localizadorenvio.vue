@@ -47,6 +47,7 @@ export default {
         const baseURL = `http://localhost:8080/ujapack/envio/${this.idEnvio.trim()}`;
         let response = await fetch(baseURL);
         const envio = await response.json();
+
         switch (envio.estado) {
           case "EN_TRANSITO":
             this.estadoEnvio = "en tránsito";

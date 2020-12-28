@@ -1,118 +1,138 @@
 <template>
   <!-- Material form register -->
-  <form>
-    <p class="h4 text-center mb-4">Creación de envío</p>
-    <div class="ml-3 grey-text">
-      <mdb-input
-        v-model="alto"
-        label="Introduce el alto del paquete"
-        icon="arrows-alt-v"
-        type="number"
-        required
-      />
-      <mdb-input
-        v-model="ancho"
-        label="Introduce el ancho del paquete"
-        icon="arrows-alt-h"
-        type="number"
-        required
-      />
-      <mdb-input
-        v-model="peso"
-        label="Introduce el peso del paquete"
-        icon="weight"
-        type="number"
-        required
-      />
-      <div class="row">
-        <blockquote class="col ml-3 blockquote bq-primary">
-          <mdb-input
-            v-model="origen.dni"
-            label="Introduce el dni del remitente"
-            icon="id-card"
-            type="text"
-            required
-          />
-          <mdb-input
-            v-model="origen.nombre"
-            label="Introduce el nombre del remitente"
-            icon="user"
-            type="text"
-            required
-          />
-          <mdb-input
-            v-model="origen.apellidos"
-            label="Introduce los apellidos del remitente"
-            icon="user"
-            type="text"
-            required
-          />
-          <select
-            class="browser-default custom-select"
-            v-model="origen.localizacion"
-            icon="map-marker-alt"
-            required
-          >
-            <option value="undefined" selected disabled>
-              Elige localización del remitente
-            </option>
-            <option
-              v-for="(option, index) in localidades"
-              v-bind:key="index"
-              v-bind:value="option.value"
-            >
-              {{ option.text }}
-            </option>
-          </select>
+  <div class="container">
+    <form class="card card-body">
+      <p class="h4 text-center mb-4 card-title">Creación de envío</p>
+      <div class="ml-3 grey-text">
+        <mdb-input
+          v-model="alto"
+          label="Introduce el alto del paquete"
+          icon="arrows-alt-v"
+          type="number"
+        />
+        <mdb-input
+          v-model="ancho"
+          label="Introduce el ancho del paquete"
+          icon="arrows-alt-h"
+          type="number"
+        />
+        <mdb-input
+          v-model="peso"
+          label="Introduce el peso del paquete"
+          icon="weight"
+          type="number"
+        />
+        <blockquote class="container blockquote bq-primary">
+          <!--Fila dni-->
+          <div class="row d-flex flex-row justify-content-around">
+            <div class="col">
+              <mdb-input
+                v-model="origen.dni"
+                label="Introduce el dni del remitente"
+                icon="id-card"
+                type="text"
+              />
+            </div>
+            <div class="col">
+              <mdb-input
+                v-model="destino.dni"
+                label="Introduce el dni del destinatario"
+                icon="id-card"
+                type="text"
+              />
+            </div>
+          </div>
+          <!--Fila nombre-->
+          <div class="row d-flex flex-row justify-content-around">
+            <div class="col">
+              <mdb-input
+                v-model="origen.nombre"
+                label="Introduce el nombre del remitente"
+                icon="user"
+                type="text"
+              />
+            </div>
+            <div class="col">
+              <mdb-input
+                v-model="destino.nombre"
+                label="Introduce el nombre del destinatario"
+                icon="user"
+                type="text"
+              />
+            </div>
+          </div>
+          <!--Fila apellidos-->
+          <div class="row d-flex flex-row justify-content-around">
+            <div class="col">
+              <mdb-input
+                v-model="origen.apellidos"
+                label="Introduce los apellidos del remitente"
+                icon="user"
+                type="text"
+              />
+            </div>
+            <div class="col">
+              <mdb-input
+                v-model="destino.apellidos"
+                label="Introduce los apellidos del destinatario"
+                icon="user"
+                type="text"
+              />
+            </div>
+          </div>
+          <!--Fila localización-->
+          <div class="row d-flex flex-row justify-content-around">
+            <div class="col">
+              <select
+                class="browser-default custom-select"
+                v-model="origen.localizacion"
+                icon="map-marker-alt"
+              >
+                <option value="undefined" selected disabled>
+                  Elige localización del remitente
+                </option>
+                <option
+                  v-for="(option, index) in localidades"
+                  v-bind:key="index"
+                  v-bind:value="option.value"
+                >
+                  {{ option.text }}
+                </option>
+              </select>
+            </div>
+
+            <div class="col">
+              <select
+                class="col browser-default custom-select"
+                v-model="destino.localizacion"
+                icon="map-marker-alt"
+              >
+                <option value="undefined" selected disabled>
+                  Elige localización del destinatario
+                </option>
+                <option
+                  v-for="(option, index) in localidades"
+                  v-bind:key="index"
+                  v-bind:value="option.value"
+                >
+                  {{ option.text }}
+                </option>
+              </select>
+            </div>
+          </div>
         </blockquote>
 
-        <div class="col ml-3">
-          <mdb-input
-            v-model="destino.dni"
-            label="Introduce el dni del destinatario"
-            icon="id-card"
-            type="text"
-            required
-          />
-          <mdb-input
-            v-model="destino.nombre"
-            label="Introduce el nombre del destinatario"
-            icon="user"
-            type="text"
-            required
-          />
-          <mdb-input
-            v-model="destino.apellidos"
-            label="Introduce los apellidos del destinatario"
-            icon="user"
-            type="text"
-            required
-          />
-          <select
-            class="browser-default custom-select"
-            v-model="destino.localizacion"
-            icon="map-marker-alt"
-            required
+        <div class="text-center">
+          <mdb-btn icon="plus fa-lg" @click="getIdPrecio()" color="success"
+            >Crear</mdb-btn
           >
-            <option value="undefined" selected disabled>
-              Elige localización del destinatario
-            </option>
-            <option
-              v-for="(option, index) in localidades"
-              v-bind:key="index"
-              v-bind:value="option.value"
-            >
-              {{ option.text }}
-            </option>
-          </select>
         </div>
       </div>
-
-      <div class="text-center">
-        <mdb-btn @click="getIdPrecio()" color="primary">Aceptar</mdb-btn>
-      </div>
-    </div>
-  </form>
+    </form>
+      <p v-show="idEnvio != ''">El id del envío es: {{ idEnvio }}</p>
+      <p v-show="precio != null">El precio del envío es: {{ precio }}</p>
+      <p v-show="error != ''">{{ error }}</p>
+  </div>
 </template>
 
 <script>
@@ -146,6 +166,7 @@ export default {
 
       precio: null,
       error: "",
+      error2:"",
       localidades: [
         { text: "Almería", value: "Almería" },
         { text: "Jaén", value: "Jaén" },
@@ -157,6 +178,10 @@ export default {
       router.push("/ujapack/crearEnvio/muestraCreaEnvio");
     },
     async getIdPrecio() {
+      this.error = "";
+      this.error2 = "";
+      this.idEnvio="";
+      this.precio=null;
       const body = {
         alto: parseInt(this.alto),
         ancho: parseInt(this.ancho),
@@ -174,18 +199,29 @@ export default {
           localizacion: this.destino.localizacion,
         },
       };
- try {
+      try {
         const baseURL = `http://localhost:8080/ujapack/envio`;
-        let response = await fetch(baseURL,{
-          method: 'POST',
-          body: JSON.stringify(body)
+        let response = await fetch(baseURL, {
+          method: "POST",
+          headers: new Headers({
+            Authorization: "Basic " + btoa("admin:admin"),
+            "Content-Type": "application/json",
+          }),
+          body: JSON.stringify(body),
         });
+        if(response.ok){
         const envio = await response.json();
-        console.log(envio);
-      
+        this.idEnvio =envio.identificador;
+        this.precio =envio.precio;
+        console.log('envio',envio);
+        }
+        else {
+            this.error = "No se ha podido crear el envío";
+        }
       } catch (err) {
-        this.error = "No se ha podido crear el envío";
+        this.error2 = "No se ha podido conectar con la API"
         console.error(err);
+        console.log(JSON.stringify(body))
       }
     },
   },
