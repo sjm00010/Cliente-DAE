@@ -7,6 +7,7 @@ import iniciosesion2 from '@/components/iniciosesion2';
 import buscaenvioactualizar from '@/components/buscaenvioactualizar';
 import muestraenviousuario from '@/components/muestraenviousuario';
 import muestraenviooperario from '@/components/muestraenviooperario';
+import muestracreaenvio from '@/components/muestracreaenvio';
 
 
 
@@ -59,6 +60,13 @@ export default new Router({
       component: localizadorenvio
     
     },
+    {
+      path: '/ujapack/crearEnvio/muestraCreaEnvio',
+      name: 'muestracreaenvio',
+      component: muestracreaenvio
+    
+    },
+
 
   ]
 });

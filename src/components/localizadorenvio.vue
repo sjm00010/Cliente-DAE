@@ -63,8 +63,9 @@ export default {
           default:
         }
         //Hacer lista de puntos de control
-        // let response = await fetch(baseURL + `/puntoControl`);
-        // const envio = await response.json();
+        // let response2 = await fetch(baseURL + `/puntoControl`);
+        // const envio2 = await response.json();
+        // envio2.
 
       } catch (err) {
         this.error = `No existe ningún envio con el id: ${this.idEnvio.trim()}`;
