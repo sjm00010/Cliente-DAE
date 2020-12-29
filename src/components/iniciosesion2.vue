@@ -18,12 +18,15 @@
     </div>
     <div class="text-center">
       <mdb-btn @click="loguear()" color="primary">Aceptar</mdb-btn>
+      <div class="p-2 alert alert-danger" v-show="error != ''">
+        {{ error }}
+      </div>
     </div>
   </form>
   <!-- Material form register -->
 </template>
 
-<script> 
+<script>
 import { mdbInput, mdbBtn } from "mdbvue";
 import router from "@/router";
 export default {
@@ -31,24 +34,24 @@ export default {
   components: {
     mdbInput,
     mdbBtn,
-    
-
   },
-    props: ['url'],
+  props: ["url"],
   data() {
     return {
       nombre: "",
       contrasena: "",
+      error: "",
     };
   },
 
   methods: {
-
     loguear() {
       if (this.nombre == "operario" && this.contrasena == "secret") {
         router.push("/ujapack/buscaEnvioActualizar");
       }
+      this.error =
+        "Se ha producido un error, introduce de nuevo las credenciales.";
+    },
   },
-},
-}
+};
 </script>

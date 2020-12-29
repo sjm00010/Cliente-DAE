@@ -32,7 +32,7 @@
     </ul>
     <div v-show="estadoEnvio!=''" class="text-center">
           <mdb-btn icon="plus fa-lg" @click="redireccion()" color="success"
-            >Editar envío
+            >Actualizar envío
             </mdb-btn
           >
         </div>
