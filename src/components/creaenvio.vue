@@ -137,7 +137,6 @@
 
 <script>
 import { mdbInput, mdbBtn } from "mdbvue";
-import router from "@/router";
 
 export default {
   name: "creaenvio",
@@ -174,9 +173,7 @@ export default {
     };
   },
   methods: {
-    redireccion() {
-      router.push("/ujapack/crearEnvio/muestraCreaEnvio");
-    },
+
     async getIdPrecio() {
       this.error = "";
       this.error2 = "";

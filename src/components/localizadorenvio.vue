@@ -21,12 +21,13 @@
     <ul>
      <li v-show="pc.fecha!=null" v-for="(pc, index) in  puntosControl" v-bind:key="index"> {{pc.fecha}}</li>
     </ul>
+    <p v-show="situacion != null"> Se encuentra ahora mismo en {{ situacion }}</p>
+
   </div>
 </template>
 
 <script>
 import { mdbInput, mdbBtn } from "mdbvue";
-import router from "@/router";
 export default {
   name: "localizadorenvio",
   components: {
@@ -39,16 +40,15 @@ export default {
       estadoEnvio: "",
       error: "",
       puntosControl:null,
+      situacion: null,
     };
   },
   methods: {
-    redireccion() {
-      router.push("/ujapack/muestraEnvioUsuario");
-    },
     async getEnvio() {
       this.error = "";
       this.estadoEnvio = "";
       this.puntosControl=null;
+      this.situacion=null;
       try {
         const baseURL = `http://localhost:8080/ujapack/envio/${this.idEnvio.trim()}`;
         let response = await fetch(baseURL);
@@ -69,22 +69,20 @@ export default {
             break;
           default:
         }
-        //Hacer lista de puntos de control
+        //Lista de puntos de control
          response = await fetch(baseURL + `/puntoControl`);
          const puntoControl = await response.json();
          this.puntosControl = puntoControl;
-      } catch (err) {
+         //Id del punto de control (para saber donde se encuentra el envío)
+        response = await fetch(baseURL + `/situacion`);
+         const situacionEnvio = await response.json();
+         this.situacion = situacionEnvio.idPC;
+      }  catch (err) {
         this.error = `No existe ningún envio con el id: ${this.idEnvio.trim()}`;
       }
 
-
-      // fetch(`http://localhost:8080/ujapack/envio/${this.idEnvio.trim()}`)
-      //   .then((response) => response.json())
-      //   .then((data) => (this.respServ = data))
-      //   .catch((error) => {
-      //     console.log("Error:", error);
-      //   });
     },
+
   },
 };
 </script>

@@ -5,9 +5,7 @@ import creaenvio from '@/components/creaenvio';
 import iniciosesion from '@/components/iniciosesion';
 import iniciosesion2 from '@/components/iniciosesion2';
 import buscaenvioactualizar from '@/components/buscaenvioactualizar';
-import muestraenviousuario from '@/components/muestraenviousuario';
-import muestraenviooperario from '@/components/muestraenviooperario';
-import muestracreaenvio from '@/components/muestracreaenvio';
+import editarenvio from '@/components/editarenvio';
 
 
 
@@ -40,33 +38,20 @@ export default new Router({
       component: buscaenvioactualizar
     
     },
-    {
-      path: '/ujapack/buscaEnvioActualizar/muestraEnvioOperario',
-      name: 'muestraenviooperario',
-      component: muestraenviooperario
     
-    },
-    {
-      path: '/ujapack/muestraEnvioUsuario',
-      name: 'muestraenviousuario',
-      component: muestraenviousuario
-    
-    },
-    
-
     {
       path: '/ujapack',
       name: 'localizadorenvio',
       component: localizadorenvio
     
     },
+    
     {
-      path: '/ujapack/crearEnvio/muestraCreaEnvio',
-      name: 'muestracreaenvio',
-      component: muestracreaenvio
+      path: '/ujapack/editarEnvio',
+      name: 'editarenvio',
+      component: editarenvio
     
     },
-
 
   ]
 });
