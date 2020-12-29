@@ -129,9 +129,9 @@
         </div>
       </div>
     </form>
-      <p v-show="idEnvio != ''">El id del envío es: {{ idEnvio }}</p>
-      <p v-show="precio != null">El precio del envío es: {{ precio }}</p>
-      <p v-show="error != ''">{{ error }}</p>
+    <p v-show="idEnvio != ''">El id del envío es: {{ idEnvio }}</p>
+    <p v-show="precio != null">El precio del envío es: {{ precio }}</p>
+    <p v-show="error != ''">{{ error }}</p>
   </div>
 </template>
 
@@ -165,20 +165,66 @@ export default {
 
       precio: null,
       error: "",
-      error2:"",
+      error2: "",
       localidades: [
         { text: "Almería", value: "Almería" },
+        { text: "Cádiz", value: "Cádiz" },
+        { text: "Córdoba", value: "Córdoba" },
+        { text: "Granada", value: "Granada" },
         { text: "Jaén", value: "Jaén" },
+        { text: "Málaga", value: "Málaga" },
+        { text: "Sevilla", value: "Sevilla" },
+        { text: "Badajoz", value: "Badajoz" },
+        { text: "Cáceres", value: "Cáceres" },
+        { text: "Melilla", value: "Melilla" },
+        { text: "Albacete", value: "Albacete" },
+        { text: "Ciudad Real", value: "Ciudad Real" },
+        { text: "Cuenca", value: "Cuenca" },
+        { text: "Guadalajara", value: "Guadalajara" },
+        { text: "Toledo", value: "Toledo" },
+        { text: "Castellón", value: "Castellón" },
+        { text: "Valencia", value: "Valencia" },
+        { text: "Alicante", value: "Alicante" },
+        { text: "Islas Baleares", value: "Islas Baleares" },
+        { text: "León", value: "León" },
+        { text: "Zamora", value: "Zamora" },
+        { text: "Salamanca", value: "Salamanca" },
+        { text: "Palencia", value: "Palencia" },
+        { text: "Valladolid", value: "Valladolid" },
+        { text: "Avila", value: "Avila" },
+        { text: "Burgos", value: "Burgos" },
+        { text: "Segovia", value: "Segovia" },
+        { text: "Soria", value: "Soria" },
+        { text: "La Rioja", value: "La Rioja" },
+        { text: "Lleida", value: "Lleida" },
+        { text: "Girona", value: "Girona" },
+        { text: "Barcelona", value: "Barcelona" },
+        { text: "Tarragona", value: "Tarragona" },
+        { text: "Zaragoza", value: "Zaragoza" },
+        { text: "Huesca", value: "Huesca" },
+        { text: "Navarra", value: "Navarra" },
+        { text: "Teruel", value: "Teruel" },
+        { text: "Vizcaya", value: "Vizcaya" },
+        { text: "Alava", value: "Alava" },
+        { text: "San Sebastián", value: "San Sebastián" },
+        { text: "Cantabria", value: "Cantabria" },
+        { text: "La Coruña", value: "La Coruña" },
+        { text: "Lugo", value: "Lugo" },
+        { text: "Orense", value: "Orense" },
+        { text: "Pontevedra", value: "Pontevedra" },
+        { text: "Asturias", value: "Asturias" },
+        { text: "Madrid", value: "Madrid" },
+        { text: "Santa Cruz de Tenerife", value: "Santa Cruz de Tenerife" },
+        { text: "Las Palmas", value: "Las Palmas" },
       ],
     };
   },
   methods: {
-
     async getIdPrecio() {
       this.error = "";
       this.error2 = "";
-      this.idEnvio="";
-      this.precio=null;
+      this.idEnvio = "";
+      this.precio = null;
       const body = {
         alto: parseInt(this.alto),
         ancho: parseInt(this.ancho),
@@ -206,16 +252,15 @@ export default {
           }),
           body: JSON.stringify(body),
         });
-        if(response.ok){
-        const envio = await response.json();
-        this.idEnvio =envio.identificador;
-        this.precio =envio.precio;
-        }
-        else {
-            this.error = "No se ha podido crear el envío";
+        if (response.ok) {
+          const envio = await response.json();
+          this.idEnvio = envio.identificador;
+          this.precio = envio.precio;
+        } else {
+          this.error = "No se ha podido crear el envío";
         }
       } catch (err) {
-        this.error2 = "No se ha podido conectar con la API"
+        this.error2 = "No se ha podido conectar con la API";
       }
     },
   },

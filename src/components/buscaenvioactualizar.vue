@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="container">
     <!-- Material form register -->
-    <form>
+    <form class="card card-body">
       <!--Formulario que busca el envio a actualizar-->
-      <p class="h4 text-center mb-4">Busca un envío</p>
+      <p class="h4 text-center mb-4 card-title">Busca un envío</p>
       <div class="grey-text">
         <mdb-input
           v-model="idEnvio"
