@@ -1,57 +1,43 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import localizadorenvio from '@/components/localizadorenvio';
-import creaenvio from '@/components/creaenvio';
-import iniciosesion from '@/components/iniciosesion';
-import iniciosesion2 from '@/components/iniciosesion2';
-import buscaenvioactualizar from '@/components/buscaenvioactualizar';
-import editarenvio from '@/components/editarenvio';
-
-
+import buscar from '@/views/buscar';
+import envio from '@/views/envio';
+import creaEnvio from '@/views/creaEnvio';
+import actualizarEnvio from '@/views/actualizarEnvio';
+import sesion from '@/views/inicioSesion';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/', redirect: '/ujapack'
+      path: '/',
+      redirect: '/buscaEnvio'
     },
     {
-      path: '/ujapack/iniciarSesion',
-      name: 'iniciosesion',
-      component: iniciosesion
+      path: '/buscaEnvio',
+      name: 'buscar',
+      component: buscar
     },
     {
-      path: '/ujapack/iniciarSesion2',
-      name: 'iniciosesion2',
-      component: iniciosesion2
+      path: '/informacionEnvio',
+      name: 'envio',
+      component: envio
     },
     {
-      path: '/ujapack/crearEnvio',
-      name: 'creaenvio',
-      component: creaenvio
-    
+      path: '/inicioSesion',
+      name: 'sesion',
+      component: sesion
     },
     {
-      path: '/ujapack/buscaEnvioActualizar',
-      name: 'buscaenvioactualizar',
-      component: buscaenvioactualizar
-    
+      path: '/crearEnvio',
+      name: 'crearEnvio',
+      component: creaEnvio
     },
-    
     {
-      path: '/ujapack',
-      name: 'localizadorenvio',
-      component: localizadorenvio
-    
-    },
-    
-    {
-      path: '/ujapack/editarEnvio',
-      name: 'editarenvio',
-      component: editarenvio
-    
-    },
-
+      path: '/actualizarEnvio',
+      name: 'actualizarEnvio',
+      component: actualizarEnvio
+    }
   ]
 });

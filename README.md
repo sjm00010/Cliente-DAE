@@ -8,10 +8,15 @@ Para hacer uso de la API implementada se va a desarrollar una aplicación web. E
    2. *Introducción de datos requeridos*: un segundo formulario para introducir los datos necesarios para la notificación. Este segundo formulario se habilitara tras el primero siempre y cuando no haya un error en la obtención del envió.
 - **Obtención de información del envío**: estado actual y fechas de paso por los puntos de control hasta el momento. Similar al formulario de *Búsqueda del envío a notificar*, se presentaran al usuario (sin identificar) los datos del envío solicitado.
 
-## Como usar el proyecto
-Antes de poder usar el cliente web es necesario tener iniciada la API y la base de datos en Docker, como se indica en el [proyecto del API](https://gitlab.com/sjm00010/dae).
 ### Iniciar el proyecto
-Para iniciar el proyecto en la versión de desarrollo, solo es necesario clonar el repositorio y ejecutar en la consola el siguiente comando ``` npm start ```, que lanzará el proyecto y lo abrirá en una pestaña del navegador automaticamente.
+Para iniciar el proyecto en la versión de desarrollo, es necesario clonar el repositorio, instalar las dependencias (``` npm install ```) y ejecutar en la consola el siguiente comando ``` npm start ```, que lanzará el proyecto con HTTPS y lo abrirá en una pestaña del navegador automaticamente.
+
+## Como usar el proyecto
+1. Iniciar la base de datos en Docker.
+2. Iniciar la API, como se indica en el [proyecto del API](https://gitlab.com/sjm00010/dae).
+3. Iniciar el cliente web.
+
+Se debe realizar en ese orden para que el cliente no le quite el puerto al API. Además de lo comentado es aconsejable, para no tener problemas durante la ejecución del cliente web debido al certificado HTTPS, habilitar la siguiente opción en Chrome : ```chrome://flags/#allow-insecure-localhost```. Si no se realiza debera de abrirse la aplicacion en incognito ya que Google Chrome (así como otro navegadores) bloquea certificados no reconcidos.
 
 ### Versión de producción
 Si se desea trabajar con la versión de produccion hay que realizar dos pasos:
