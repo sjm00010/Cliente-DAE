@@ -13,7 +13,7 @@ Para iniciar el proyecto en la versión de desarrollo, es necesario clonar el re
 
 ## Como usar el proyecto
 1. Iniciar la base de datos en Docker.
-2. Iniciar la API, como se indica en el [proyecto del API](https://gitlab.com/sjm00010/dae).
+2. Iniciar la API, como se indica en el [proyecto del API](https://github.com/sjm00010/Practicas-DAE).
 3. Iniciar el cliente web.
 
 Se debe realizar en ese orden para que el cliente no le quite el puerto al API. Además de lo comentado es aconsejable, para no tener problemas durante la ejecución del cliente web debido al certificado HTTPS, habilitar la siguiente opción en Chrome : ```chrome://flags/#allow-insecure-localhost```. Si no se realiza debera de abrirse la aplicacion en incognito ya que Google Chrome (así como otro navegadores) bloquea certificados no reconcidos.
